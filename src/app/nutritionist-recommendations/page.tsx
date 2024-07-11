@@ -62,8 +62,12 @@ export default function NutritionistRecommendations() {
   };
 
   if (!recommendation) {
-    return (<button className={styles.createPlanButton} onClick={createNewRecommendation} >
-      {'Create a new meal plan'}
+    return (<button 
+      className={styles.createPlanButton} 
+      onClick={createNewRecommendation} 
+      disabled={isCreating}
+    >
+      {isCreating ? 'Creating...' : 'Create a new meal plan'}
     </button>);
   }
 
