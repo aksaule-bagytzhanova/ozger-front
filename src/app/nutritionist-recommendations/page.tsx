@@ -62,7 +62,9 @@ export default function NutritionistRecommendations() {
   };
 
   if (!recommendation) {
-    return <div>Loading...</div>;
+    return (<button className={styles.createPlanButton} onClick={createNewRecommendation} >
+      {'Create a new meal plan'}
+    </button>);
   }
 
   const renderNutritionalInfo = (description) => {
