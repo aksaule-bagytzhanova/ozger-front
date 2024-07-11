@@ -18,6 +18,12 @@ const RecipePage = () => {
     }
   }, []);
 
+  const renderRecipe = (recipe) => {
+    return recipe.split('\n').map((line, index) => (
+      <p key={index}>{line}</p>
+    ));
+  };
+
   const handleBackClick = () => {
     router.back();
   };
@@ -26,7 +32,7 @@ const RecipePage = () => {
     <div className={styles.container}>
       <button onClick={handleBackClick} className={styles.backButton}>&larr; Back</button>
       <h1 className={styles.title}>{title}</h1>
-      <pre className={styles.recipeText}>{recipe}</pre>
+      <pre className={styles.recipeText}>{renderRecipe(recipe)}</pre>
     </div>
   );
 };

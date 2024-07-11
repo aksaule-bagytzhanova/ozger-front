@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/navigation'; // Импортируем useRouter из 'next/navigation'
+import { useRouter } from 'next/navigation';
 import styles from '../../styles/NutritionistRecommendations.module.css';
 
 export default function NutritionistRecommendations() {
   const [recommendation, setRecommendation] = useState(null);
-  const [isCreating, setIsCreating] = useState(false); // Добавляем состояние для отслеживания процесса создания
+  const [isCreating, setIsCreating] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -34,11 +34,9 @@ export default function NutritionistRecommendations() {
   const createNewRecommendation = async () => {
     const token = localStorage.getItem('token');
     if (token) {
-      setIsCreating(true); // Устанавливаем состояние в true, когда начинается создание плана
+      setIsCreating(true);
       try {
-        const response = await axios.post('http://185.129.51.174:8001/api/recommendations/', {
-          // Данные для новой рекомендации
-        }, {
+        const response = await axios.post('http://185.129.51.174:8001/api/recommendations/', {}, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -49,32 +47,33 @@ export default function NutritionistRecommendations() {
       } catch (error) {
         console.error('Error creating new recommendation:', error);
       } finally {
-        setIsCreating(false); // Сбрасываем состояние после завершения процесса
+        setIsCreating(false);
       }
     }
   };
 
   const handleRecipeClick = (recipe, title) => {
-    // Сохранить рецепт и название в localStorage или передать через query параметры
     localStorage.setItem('recipe', recipe);
     localStorage.setItem('recipeTitle', title);
     router.push('/recipe');
   };
 
   if (!recommendation) {
-    return (<button 
-      className={styles.createPlanButton} 
-      onClick={createNewRecommendation} 
-      disabled={isCreating}
-    >
-      {isCreating ? 'Creating...' : 'Create a new meal plan'}
-    </button>);
+    return (
+      <button className={styles.createPlanButton} onClick={createNewRecommendation}>
+        {isCreating ? 'Creating...' : 'Create a new meal plan'}
+      </button>
+    );
   }
 
   const renderNutritionalInfo = (description) => {
-    return description.split('\n').map((line, index) => (
-      <p key={index}>{line}</p>
-    ));
+    return (
+      <ul>
+        {description.split('\n').map((line, index) => (
+          <li key={index}>{line}</li>
+        ))}
+      </ul>
+    );
   };
 
   return (
