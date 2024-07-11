@@ -1,19 +1,70 @@
 // src/app/my-parameters/page.tsx
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from '../../styles/MyParameters.module.css';
 
-export default function MyParameters() {
-  const [parameters, setParameters] = useState({
-    dateOfBirth: '04.12.2000',
-    sex: 'Female',
-    currentWeight: 75,
-    weightGoal: 62,
-    height: 170,
-    allergens: 'text',
-    selectedPlan: 'Lose weight',
+interface Parameters {
+  dateOfBirth: string;
+  sex: string;
+  currentWeight: string;
+  weightGoal: string;
+  height: string;
+  allergens: string;
+  selectedPlan: string;
+}
+
+const targets = {
+  'LW': 'Lose weight',
+  'GW': 'Gain weight',
+  'GMM': 'Gain muscle mass',
+  'APA': 'Add physical activities'
+} as const;
+
+const MyParameters = () => {
+  const [parameters, setParameters] = useState<Parameters>({
+    dateOfBirth: '',
+    sex: '',
+    currentWeight: '',
+    weightGoal: '',
+    height: '',
+    allergens: '',
+    selectedPlan: '',
   });
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const fetchProfile = async () => {
+        try {
+          const response = await axios.get('http://185.129.51.174:8001/api/profile/retrieve/', {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+
+          const data = response.data;
+          setParameters({
+            dateOfBirth: data.date_of_birth,
+            sex: data.gender === 'M' ? 'Male' : 'Female',
+            currentWeight: data.weight.toString(),
+            weightGoal: data.ideal_weight.toString(),
+            height: data.height.toString(),
+            allergens: data.allergy,
+            selectedPlan: targets[data.target as keyof typeof targets] || ''
+          });
+        } catch (error) {
+          console.error('Error fetching profile:', error);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+
+      fetchProfile();
+    }
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -23,11 +74,41 @@ export default function MyParameters() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Отправка данных на сервер
-    console.log('Сохраненные параметры:', parameters);
+    const token = localStorage.getItem('token');
+    if (token) {
+      const profileData = {
+        date_of_birth: parameters.dateOfBirth,
+        gender: parameters.sex === 'Male' ? 'M' : 'F',
+        weight: parseFloat(parameters.currentWeight),
+        height: parseFloat(parameters.height),
+        ideal_weight: parseFloat(parameters.weightGoal),
+        target: Object.keys(targets).find(key => targets[key as keyof typeof targets] === parameters.selectedPlan),
+        allergy: parameters.allergens
+      };
+
+      try {
+        const response = await axios.put('http://185.129.51.174:8001/api/profile/update/', profileData, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        console.log('Profile updated:', response.data);
+      } catch (error) {
+        console.error('Error updating profile:', error);
+      }
+    }
   };
+
+  if (isLoading) {
+    return (
+      <div className={styles.loaderContainer}>
+        <div className={styles.loader}></div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
@@ -92,13 +173,17 @@ export default function MyParameters() {
           </div>
           <div className={styles.column}>
             <label>Selected plan</label>
-            <input
-              type="text"
+            <select
               name="selectedPlan"
               value={parameters.selectedPlan}
               onChange={handleInputChange}
               className={styles.input}
-            />
+            >
+              <option value="Lose weight">Lose weight</option>
+              <option value="Gain weight">Gain weight</option>
+              <option value="Gain muscle mass">Gain muscle mass</option>
+              <option value="Add physical activities">Add physical activities</option>
+            </select>
           </div>
         </div>
         <div className={styles.row}>
@@ -118,3 +203,5 @@ export default function MyParameters() {
     </div>
   );
 }
+
+export default MyParameters;

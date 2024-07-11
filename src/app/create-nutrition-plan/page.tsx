@@ -3,19 +3,19 @@
 
 import Link from 'next/link';
 import styles from '../../styles/CreateNutritionPlan.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const questions = [
-  { question: "Which sex best describes you?", type: "options", options: ["Male", "Female"] },
-  { question: "What is your ideal weight goal?", type: "number" },
-  { question: "What is your date of birth?", type: "date" },
-  { question: "What's your height?", type: "number" },
-  { question: "What’s your current weight?", type: "number" },
-  { question: "What exactly do you want to do?", type: "options", options: ["Lose weight", "Gain weight", "Gain muscle mass", "Add physical activities"] },
-  { question: "Please list your allergens?", type: "text" }
-];
+interface Question {
+  question: string;
+  type: 'options' | 'number' | 'date' | 'text';
+  options?: string[];
+}
 
-export default function CreateNutritionPlan() {
+const CreateNutritionPlan = () => {
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [genders, setGenders] = useState([]);
+  const [targets, setTargets] = useState([]);
   const [progress, setProgress] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({
@@ -27,6 +27,26 @@ export default function CreateNutritionPlan() {
     question6: '',
     question7: ''
   });
+
+  useEffect(() => {
+    const fetchChoices = async () => {
+      try {
+        setQuestions([
+          { question: "Which sex best describes you?", type: 'options', options: ['Male', 'Female'] },
+          { question: "What is your ideal weight goal?", type: 'number' },
+          { question: "What is your date of birth?", type: 'date' },
+          { question: "What's your height?", type: 'number' },
+          { question: "What’s your current weight?", type: 'number' },
+          { question: "What exactly do you want to do?", type: 'options', options: ['Lose weight', 'Gain weight', 'Gain muscle mass', 'Add physical activities'] },
+          { question: "Please list your allergens?", type: 'text' }
+        ]);
+      } catch (error) {
+        console.error('Error fetching choices:', error);
+      }
+    };
+
+    fetchChoices();
+  }, []);
 
   const handleOptionClick = (answer: string) => {
     setAnswers((prevAnswers) => ({
@@ -53,20 +73,9 @@ export default function CreateNutritionPlan() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/nutrition-plan', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(answers),
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const data = await response.json();
-      console.log('Success:', data);
+      // Сохранение данных в localStorage
+      localStorage.setItem('nutritionPlan', JSON.stringify(answers));
+      window.location.href = '/sign-up'; // Переход на страницу регистрации
     } catch (error) {
       console.error('Error:', error);
     }
@@ -92,13 +101,13 @@ export default function CreateNutritionPlan() {
         <>
           <h1 className={styles.title}>{questions[currentQuestionIndex].question}</h1>
           <div className={styles.buttonContainer}>
-            {questions[currentQuestionIndex].type === "options" &&
-              questions[currentQuestionIndex].options.map((option, index) => (
+            {questions[currentQuestionIndex].type === 'options' &&
+              questions[currentQuestionIndex].options?.map((option, index) => (
                 <button key={index} className={styles.optionButton} onClick={() => handleOptionClick(option)}>
                   {option}
                 </button>
               ))}
-            {questions[currentQuestionIndex].type === "number" && (
+            {questions[currentQuestionIndex].type === 'number' && (
               <>
                 <input
                   type="number"
@@ -108,7 +117,7 @@ export default function CreateNutritionPlan() {
                 <button className={styles.nextButton} onClick={handleNextClick}>Next</button>
               </>
             )}
-            {questions[currentQuestionIndex].type === "date" && (
+            {questions[currentQuestionIndex].type === 'date' && (
               <>
                 <input
                   type="date"
@@ -118,7 +127,7 @@ export default function CreateNutritionPlan() {
                 <button className={styles.nextButton} onClick={handleNextClick}>Next</button>
               </>
             )}
-            {questions[currentQuestionIndex].type === "text" && (
+            {questions[currentQuestionIndex].type === 'text' && (
               <>
                 <textarea
                   className={styles.textArea}
@@ -139,3 +148,5 @@ export default function CreateNutritionPlan() {
     </div>
   );
 }
+
+export default CreateNutritionPlan;
