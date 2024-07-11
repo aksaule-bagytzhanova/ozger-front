@@ -1,0 +1,179 @@
+/* src/styles/Home.module.css */
+.container {
+}
+
+.gradientSection {
+  width: 100%;
+  background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
+  background-size: 800% 800%;
+  animation: gradientBackground 15s ease infinite;
+  display: flex;
+  flex-direction: column; /* Изменим на column, так как модель удалена */
+  align-items: flex-start;
+  padding-left: 74px;
+  position: relative;
+}
+
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.whiteSection {
+  width: 100%;
+  background-color: white;
+  padding-left: 74px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  padding-top: 180px;
+}
+
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 74px;
+  color: white;
+  max-width: 600px;
+}
+
+.subtitle {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #0A2540; /* Цвет текста */
+}
+
+.buttonContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+}
+
+.button {
+  margin-top: 20px;
+  padding: 30px 130px;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0); /* Прозрачный текст */
+  background-color: white; /* Белый фон */
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap; /* Запрещаем перенос текста */
+  margin-bottom: 40px;
+}
+
+.button::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 15s ease infinite;
+  white-space: nowrap; /* Запрещаем перенос текста */
+}
+
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.howItWorksContainer {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column; /* Выровняем вертикально */
+  align-items: flex-start; /* Выровняем по левой стороне */
+  margin-bottom: 20px; /* Добавим отступ снизу */
+}
+
+.howItWorksTitle {
+  margin-top: 50px;
+  font-size: 74px;
+  color: #0A2540;
+  margin: 0; /* Уберем верхний и нижний отступ */
+}
+
+.howItWorksText {
+  font-size: 20px;
+  color: #0A2540;
+  margin-top: 20px; /* Отступ сверху */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  max-width: 1200px;
+  margin-top: 3rem;
+}
+
+.card {
+  background-color: white;
+  position: relative;
+  width: 100%;
+  padding: 1.5rem;
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.card:hover,
+.card:focus,
+.card:active {
+  color: #0070f3;
+  border-color: #0070f3;
+}
+
+.card h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  color: #0A2540; /* Цвет текста */
+}
+
+.card p {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: #0A2540; /* Цвет текста */
+}
+
+.videoCard {
+  position: relative;
+  padding-top: 56.25%;
+}
+
+.videoCard iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

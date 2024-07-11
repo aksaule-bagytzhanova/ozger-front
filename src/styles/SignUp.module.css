@@ -1,0 +1,119 @@
+/* src/styles/SignUp.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #fff;
+    padding: 20px;
+  }
+  
+  .logo {
+    font-size: 24px;
+    color: #ff0080;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 36px;
+    color: #ff0080;
+    margin-bottom: 20px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .input {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 2px solid #ff0080;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+  
+  .button {
+    padding: 15px;
+    margin-top: 15px;
+    font-size: 16px;
+    color: white; /* Белый текст */
+    background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca); /* Градиент */
+    background-size: 800% 800%;
+    animation: gradientBackground 15s ease infinite; /* Анимация градиента */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  @keyframes gradientBackground {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .footerText {
+    font-size: 14px;
+    color: #ff0080;
+  }
+  
+  .signUpLink {
+    color: #ff0080;
+    text-decoration: none;
+  }
+  
+  .separatorContainer {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .separator {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #ff0080;
+  }
+  
+  .orText {
+    margin: 0 10px;
+    color: #ff0080;
+  }
+  
+  .googleButton {
+    padding: 15px;
+    font-size: 16px;
+    color: #ff0080;
+    border: 2px solid #ff0080;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .googleButton:hover {
+    padding: 16px;
+    font-size: 16px;
+    color: white; /* Белый текст */
+    background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca); /* Градиент */
+    background-size: 800% 800%;
+    border: 2px solid white;
+    border-radius: 10px;
+    animation: gradientBackground 15s ease infinite; /* Анимация градиента */
+    cursor: pointer;
+    }
+  

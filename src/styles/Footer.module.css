@@ -1,0 +1,36 @@
+/* src/styles/Footer.module.css */
+.footer {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff; /* Устанавливаем белый фон */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0A2540; /* Цвет текста */
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  align-items: center; /* Выровнять элементы по центру */
+  margin: 0; /* Убрать отступы */
+  padding: 0; /* Убрать отступы */
+}
+
+.navList li {
+  margin-left: 20px;
+}
+
+.navList a {
+  color: #0A2540; /* Цвет текста */
+  text-decoration: none; /* Убрать подчеркивание */
+}
+
+.legal {
+  color: #0A2540; /* Цвет текста */
+}
