@@ -23,7 +23,7 @@ export default function NutritionistRecommendations() {
           const data = response.data;
           setRecommendation(data[0]);
         } catch (error) {
-          console.error('Error fetching recommendations:', error);
+          console.error('Ұсыныстарды алу кезінде қате орын алды:', error);
         }
       };
 
@@ -45,7 +45,7 @@ export default function NutritionistRecommendations() {
         const newRecommendation = response.data;
         setRecommendation(newRecommendation);
       } catch (error) {
-        console.error('Error creating new recommendation:', error);
+        console.error('Жаңа ұсынысты жасау кезінде қате орын алды:', error);
       } finally {
         setIsCreating(false);
       }
@@ -61,7 +61,7 @@ export default function NutritionistRecommendations() {
   if (!recommendation) {
     return (
       <button className={styles.createPlanButton} onClick={createNewRecommendation}>
-        {isCreating ? 'Creating...' : 'Create a new meal plan'}
+        {isCreating ? 'Жасалуда...' : 'Жаңа тамақтану жоспарын жасаңыз'}
       </button>
     );
   }
@@ -78,13 +78,13 @@ export default function NutritionistRecommendations() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Recommendations from the nutritionist</h1>
+      <h1 className={styles.title}>Нутрициологтың ұсыныстары</h1>
       <div className={styles.mealSection}>
-        <h2 className={styles.mealTitle}>Breakfast</h2>
+        <h2 className={styles.mealTitle}>Таңғы ас</h2>
         <div className={styles.mealContent}>
           <div className={styles.mealItem}>
             <div className={styles.mealImage}>{recommendation.breakfast.title}</div>
-            <button className={styles.recipeButton} onClick={() => handleRecipeClick(recommendation.breakfast.recipe, recommendation.breakfast.title)}>Recipe</button>
+            <button className={styles.recipeButton} onClick={() => handleRecipeClick(recommendation.breakfast.recipe, recommendation.breakfast.title)}>Рецепт</button>
             <div className={styles.nutritionalInfo}>
               {renderNutritionalInfo(recommendation.breakfast.description)}
             </div>
@@ -93,11 +93,11 @@ export default function NutritionistRecommendations() {
       </div>
 
       <div className={styles.mealSection}>
-        <h2 className={styles.mealTitle}>Lunch</h2>
+        <h2 className={styles.mealTitle}>Түскі ас</h2>
         <div className={styles.mealContent}>
           <div className={styles.mealItem}>
             <div className={styles.mealImage}>{recommendation.lunch.title}</div>
-            <button className={styles.recipeButton} onClick={() => handleRecipeClick(recommendation.lunch.recipe, recommendation.lunch.title)}>Recipe</button>
+            <button className={styles.recipeButton} onClick={() => handleRecipeClick(recommendation.lunch.recipe, recommendation.lunch.title)}>Рецепт</button>
             <div className={styles.nutritionalInfo}>
               {renderNutritionalInfo(recommendation.lunch.description)}
             </div>
@@ -106,11 +106,11 @@ export default function NutritionistRecommendations() {
       </div>
 
       <div className={styles.mealSection}>
-        <h2 className={styles.mealTitle}>Dinner</h2>
+        <h2 className={styles.mealTitle}>Кешкі ас</h2>
         <div className={styles.mealContent}>
           <div className={styles.mealItem}>
             <div className={styles.mealImage}>{recommendation.dinner.title}</div>
-            <button className={styles.recipeButton} onClick={() => handleRecipeClick(recommendation.dinner.recipe, recommendation.dinner.title)}>Recipe</button>
+            <button className={styles.recipeButton} onClick={() => handleRecipeClick(recommendation.dinner.recipe, recommendation.dinner.title)}>Рецепт</button>
             <div className={styles.nutritionalInfo}>
               {renderNutritionalInfo(recommendation.dinner.description)}
             </div>
@@ -123,7 +123,7 @@ export default function NutritionistRecommendations() {
         onClick={createNewRecommendation} 
         disabled={isCreating}
       >
-        {isCreating ? 'Creating...' : 'Create a new meal plan'}
+        {isCreating ? 'Жасалуда...' : 'Жаңа тамақтану жоспарын жасаңыз'}
       </button>
     </div>
   );

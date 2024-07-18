@@ -47,40 +47,40 @@ const LoginPage = () => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Welcome back</h2>
+      <h2 className={styles.title}>Қайта оралғаныңызға қуаныштымыз</h2>
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
           type="email"
-          placeholder="Email address"
+          placeholder="Электрондық пошта адресі"
           className={styles.input}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Құпия сөз"
           className={styles.input}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         {error && <p className={styles.error}>{error}</p>}
         <button type="submit" className={styles.button} disabled={loading}>
-          {loading ? 'Loading...' : 'Continue'}
+          {loading ? 'Loading...' : 'Жалғастыру'}
         </button>
       </form>
       <div className={styles.footer}>
         <p className={styles.footerText}>
-          Don't have an account?{' '}
+          Аккаунтыңыз жоқ па?{' '}
           <Link href="/sign-up" passHref legacyBehavior>
-            <a className={styles.signUpLink}>Sign Up</a>
+            <a className={styles.signUpLink}>Тіркелу</a>
           </Link>
         </p>
         <div className={styles.separatorContainer}>
           <div className={styles.separator}></div>
-          <p className={styles.orText}>OR</p>
+          <p className={styles.orText}>НЕМЕСЕ</p>
           <div className={styles.separator}></div>
         </div>
-        <button className={styles.googleButton}>Continue with Google</button>
+        <button className={styles.googleButton}>Google арқылы жалғастырыңыз</button>
       </div>
     </div>
   );

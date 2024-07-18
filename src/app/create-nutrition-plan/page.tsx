@@ -32,13 +32,13 @@ const CreateNutritionPlan = () => {
     const fetchChoices = async () => {
       try {
         setQuestions([
-          { question: "Which sex best describes you?", type: 'options', options: ['Male', 'Female'] },
-          { question: "What is your ideal weight goal?", type: 'number' },
-          { question: "What is your date of birth?", type: 'date' },
-          { question: "What's your height?", type: 'number' },
-          { question: "What’s your current weight?", type: 'number' },
-          { question: "What exactly do you want to do?", type: 'options', options: ['Lose weight', 'Gain weight', 'Gain muscle mass', 'Add physical activities'] },
-          { question: "Please list your allergens?", type: 'text' }
+          { question: "Сіздің жынысыңызды қалай сипаттайсыз?", type: 'options', options: ['Ер адам', 'Әйел адам'] },
+          { question: "Сіздің идеал салмақ мақсатыңыз қандай?", type: 'number' },
+          { question: "Сіздің туған күніңіз қашан?", type: 'date' },
+          { question: "Сіздің бойыңыз қанша?", type: 'number' },
+          { question: "Сіздің қазіргі салмағыңыз қанша?", type: 'number' },
+          { question: "Нақты қандай мақсатқа жетуді қалайсыз?", type: 'options', options: ['Салмақты тастау', 'Салмақ қосу', 'Бұлшықет массасын қосу', 'Физикалық белсенділіктерді қосу'] },
+          { question: "Аллергендеріңізді көрсетіңіз", type: 'text' }
         ]);
       } catch (error) {
         console.error('Error fetching choices:', error);
@@ -87,7 +87,7 @@ const CreateNutritionPlan = () => {
         <Link href="/" legacyBehavior>
           <a className={styles.backButton}>&larr;</a>
         </Link>
-        <span className={styles.headerText}>DEMOGRAPHIC PROFILE</span>
+        <span className={styles.headerText}>ДЕМОГРАФИЯЛЫҚ ПРОФИЛЬ</span>
       </div>
       <div className={styles.progressBarContainer}>
         <div className={styles.progressBar}>

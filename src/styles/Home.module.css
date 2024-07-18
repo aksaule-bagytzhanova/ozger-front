@@ -45,7 +45,7 @@
 .title {
   margin: 0;
   line-height: 1.15;
-  font-size: 74px;
+  font-size: 52px;
   color: white;
   max-width: 600px;
 }
@@ -66,7 +66,7 @@
 
 .button {
   margin-top: 20px;
-  padding: 30px 130px;
+  padding: 30px 250px;
   font-size: 24px;
   color: rgba(0, 0, 0, 0); /* Прозрачный текст */
   background-color: white; /* Белый фон */
@@ -75,7 +75,7 @@
   cursor: pointer;
   position: relative;
   white-space: nowrap; /* Запрещаем перенос текста */
-  margin-bottom: 40px;
+  margin-bottom: 90px;
 }
 
 .button::before {
@@ -114,7 +114,7 @@
 
 .howItWorksTitle {
   margin-top: 50px;
-  font-size: 74px;
+  font-size: 65px;
   color: #0A2540;
   margin: 0; /* Уберем верхний и нижний отступ */
 }

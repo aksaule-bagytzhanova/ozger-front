@@ -33,44 +33,36 @@ const Header = () => {
               <>
                 <li>
                   <Link href="/create-nutrition-plan" passHref legacyBehavior>
-                  <a>Create a nutrition plan</a>
+                  <a>Тамақтану жоспарын жасаңыз</a>
                   </Link>
                 </li>
               </>
             ) : (
               <><li>
                   <Link href="/my-parameters" passHref legacyBehavior>
-                    <a>My parameters</a>
+                    <a>Менің параметрлерім</a>
                   </Link>
                 </li><li className={styles.dropdown}>
-                    <a>Recommendations</a>
+                    <a>Ұсыныстар</a>
                     <div className={styles.dropdownContent}>
                       <Link href="/nutritionist-recommendations" passHref legacyBehavior>
-                        <a>From Nutritionist Doctor</a>
-                      </Link>
-                      <Link href="/recommendations/dietitian" passHref legacyBehavior>
-                        <a>From Dietitian Doctor</a>
+                        <a>Нутрициолог дәрігердің ұсыныстары</a>
                       </Link>
                       <Link href="/recommendations/fitness-instructor" passHref legacyBehavior>
-                        <a>From Fitness Instructor</a>
+                        <a>Фитнес жаттықтырушысының ұсыныстары</a>
                       </Link>
                     </div>
                   </li></>
             )}
-            <li>
-              <Link href="/my-character" passHref legacyBehavior>
-                <a>My character</a>
-              </Link>
-            </li>
             <li className={styles.langSwitch}>
-              <a href="#">EN</a>
+              <a href="#">RU</a>
               <a href="#">KZ</a>
             </li>
             {!isAuthenticated ? (
               <>
                 <li>
                   <Link href="/login" passHref legacyBehavior>
-                    <button className={styles.logInButton}>Log in</button>
+                    <button className={styles.logInButton}>Кіру</button>
                   </Link>
                 </li>
                 <li>
@@ -81,7 +73,7 @@ const Header = () => {
               </>
             ) : (
               <li>
-                <button className={styles.signOutButton} onClick={handleSignOut}>Sign out</button>
+                <button className={styles.signOutButton} onClick={handleSignOut}>Шығу</button>
               </li>
             )}
           </ul>

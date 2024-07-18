@@ -95,47 +95,47 @@ const SignUpPage = () => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Create an account</h2>
+      <h2 className={styles.title}>Аккаунтты тіркеу</h2>
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
           type="email"
-          placeholder="Email address"
+          placeholder="Электрондық пошта адресі"
           className={styles.input}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Құпия сөз"
           className={styles.input}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <input
           type="password"
-          placeholder="Confirm password"
+          placeholder="Құпия сөзді растаңыз"
           className={styles.input}
           value={password2}
           onChange={(e) => setPassword2(e.target.value)}
         />
         {error && <p className={styles.error}>{error}</p>}
         <button type="submit" className={styles.button} disabled={loading}>
-          {loading ? 'Loading...' : 'Continue'}
+          {loading ? 'Loading...' : 'Жалғастыру'}
         </button>
-      </form>
+      </form> 
       <div className={styles.footer}>
         <p className={styles.footerText}>
-          Already have an account?{' '}
+        Аккаунтыңыз бар ма?{' '}
           <Link href="/login" passHref legacyBehavior>
-            <a className={styles.signUpLink}>Log In</a>
+            <a className={styles.signUpLink}>Кіру</a>
           </Link>
         </p>
         <div className={styles.separatorContainer}>
           <div className={styles.separator}></div>
-          <p className={styles.orText}>OR</p>
+          <p className={styles.orText}>НЕМЕСЕ</p>
           <div className={styles.separator}></div>
         </div>
-        <button className={styles.googleButton}>Continue with Google</button>
+        <button className={styles.googleButton}>Google арқылы жалғастырыңыз</button>
       </div>
     </div>
   );

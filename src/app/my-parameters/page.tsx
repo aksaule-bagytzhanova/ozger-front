@@ -112,11 +112,11 @@ const MyParameters = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>My parameters</h1>
+      <h1 className={styles.title}>Менің параметрлерім</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.row}>
           <div className={styles.column}>
-            <label>Date of birth</label>
+            <label>Туған күніңіз</label>
             <input
               type="text"
               name="dateOfBirth"
@@ -126,21 +126,21 @@ const MyParameters = () => {
             />
           </div>
           <div className={styles.column}>
-            <label>Sex</label>
+            <label>Жынысыңыз</label>
             <select
               name="sex"
               value={parameters.sex}
               onChange={handleInputChange}
               className={styles.input}
             >
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
+              <option value="Male">Ер адам</option>
+              <option value="Female">Әйел адам</option>
             </select>
           </div>
         </div>
         <div className={styles.row}>
           <div className={styles.column}>
-            <label>Current weight</label>
+            <label>Қазіргі салмағыңыз</label>
             <input
               type="text"
               name="currentWeight"
@@ -150,7 +150,7 @@ const MyParameters = () => {
             />
           </div>
           <div className={styles.column}>
-            <label>Weight goal</label>
+            <label>Мақсатты салмағыңыз</label>
             <input
               type="text"
               name="weightGoal"
@@ -162,7 +162,7 @@ const MyParameters = () => {
         </div>
         <div className={styles.row}>
           <div className={styles.column}>
-            <label>Height</label>
+            <label>Бойыңыз</label>
             <input
               type="text"
               name="height"
@@ -172,23 +172,23 @@ const MyParameters = () => {
             />
           </div>
           <div className={styles.column}>
-            <label>Selected plan</label>
+            <label>Таңдалған жоспарыңыз</label>
             <select
               name="selectedPlan"
               value={parameters.selectedPlan}
               onChange={handleInputChange}
               className={styles.input}
             >
-              <option value="Lose weight">Lose weight</option>
-              <option value="Gain weight">Gain weight</option>
-              <option value="Gain muscle mass">Gain muscle mass</option>
-              <option value="Add physical activities">Add physical activities</option>
+              <option value="Lose weight">Салмақты тастау</option>
+              <option value="Gain weight">Салмақ қосу</option>
+              <option value="Gain muscle mass">Бұлшықет массасын қосу</option>
+              <option value="Add physical activities">Физикалық белсенділіктерді қосу</option>
             </select>
           </div>
         </div>
         <div className={styles.row}>
           <div className={styles.column}>
-            <label>Allergens</label>
+            <label>Аллергендер</label>
             <input
               type="text"
               name="allergens"
@@ -198,7 +198,7 @@ const MyParameters = () => {
             />
           </div>
         </div>
-        <button type="submit" className={styles.button}>Save</button>
+        <button type="submit" className={styles.button}>Сақтау</button>
       </form>
     </div>
   );
