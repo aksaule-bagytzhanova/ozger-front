@@ -1,120 +1,147 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 36px;
+  background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 15s ease infinite;
+  margin-bottom: 40px;
+  text-align: center; /* Центрируем заголовок */
+}
+
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .title {
-    font-size: 36px;
-    background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
-    background-size: 800% 800%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientText 15s ease infinite;
-    margin-bottom: 40px;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  @keyframes gradientText {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  100% {
+    background-position: 0% 50%;
   }
-  
-  .mealSection {
-    width: 100%;
-    max-width: 1200px;
-    margin-bottom: 40px;
+}
+
+.mealSection {
+  width: 100%;
+  max-width: 400px; /* Уменьшили ширину для лучшего центрирования */
+  margin-bottom: 40px;
+  text-align: center; /* Центрируем заголовок секции */
+}
+
+.mealTitle {
+  font-size: 28px;
+  color: #0A2540;
+  margin-bottom: 20px;
+}
+
+.mealContent {
+  display: flex;
+  flex-direction: column; /* Добавили колонну */
+  align-items: center; /* Центрируем содержимое */
+}
+
+.mealItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Увеличиваем ширину для центрирования */
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  text-align: center; /* Центрируем текст */
+}
+
+.mealItem:hover {
+  transform: translateY(-10px);
+}
+
+.mealImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.mealImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.mealTitleOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.recipeButton {
+  padding: 10px 20px;
+  font-size: 14px;
+  color: white;
+  background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
+  background-size: 800% 800%;
+  animation: gradientBackground 15s ease infinite;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .mealTitle {
-    font-size: 28px;
-    color: #0A2540;
-    margin-bottom: 20px;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  .mealContent {
-    display: flex;
-    justify-content: space-between;
+  100% {
+    background-position: 0% 50%;
   }
-  
-  .mealItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 45%;
-    background-color: #f8f8f8;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-  }
-  
-  .mealItem:hover {
-    transform: translateY(-10px);
-  }
-  
-  .mealImage {
-    width: 100%;
-    height: 200px;
-    background-color: #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .recipeButton {
-    padding: 10px 20px;
-    font-size: 14px;
-    color: white;
-    background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
-    background-size: 800% 800%;
-    animation: gradientBackground 15s ease infinite;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-bottom: 20px;
-  }
-  
-  @keyframes gradientBackground {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  
-  .nutritionalInfo {
-    text-align: left;
-    color: #0A2540;
-  }
-  
-  .createPlanButton {
-    padding: 15px 30px;
-    font-size: 18px;
-    color: white;
-    background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
-    background-size: 800% 800%;
-    animation: gradientBackground 15s ease infinite;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-top: 40px;
-  }
-  
-  .createPlanButton:disabled {
-    background-color: #cccccc; /* Цвет для неактивной кнопки */
-    cursor: not-allowed; /* Указатель для неактивной кнопки */
-  }
+}
+
+.nutritionalInfo {
+  text-align: center; /* Центрируем текст */
+  color: #0A2540;
+  list-style-type: none; /* Убираем маркеры списка */
+  padding: 0; /* Убираем отступы списка */
+  margin: 0; /* Убираем отступы списка */
+}
+
+.nutritionalInfo li {
+  margin-bottom: 10px; /* Добавляем отступ между элементами списка */
+}
+
+.createPlanButton {
+  padding: 15px 30px;
+  font-size: 18px;
+  color: white;
+  background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
+  background-size: 800% 800%;
+  animation: gradientBackground 15s ease infinite;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+.createPlanButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

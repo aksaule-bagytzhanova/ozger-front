@@ -1,168 +1,161 @@
-/* src/styles/Header.module.css */
 .header {
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
-    background-size: 800% 800%;
-    animation: gradientBackground 15s ease infinite;
-  }
-  
-  @keyframes gradientBackground {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  
-  .logo {
-    font-size: 2rem;
-    font-weight: bold;
-    color: white;
-  }
-  
-  .navList {
-    display: flex;
-    list-style: none;
-    align-items: center; /* Выровнять элементы по центру */
-    margin: 0; /* Убрать отступы */
-    padding: 0; /* Убрать отступы */
-  }
-    
-  .navList li {
-    margin-left: 20px;
-  }
-  
-  .navList a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .langSwitch a {
-    margin-left: 10px;
-  }
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
+  background-size: 800% 800%;
+  animation: gradientBackground 15s ease infinite;
+}
 
-  .logInButton {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: transparent;
-    border: 2px solid white; /* Белая рамка */
-    border-radius: 8px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
   }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
-  .headerContent {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: calc(100% - 200px); 
-    margin: 0 90px; 
-  }
-  
-  .signUpButton {
-    padding: 20px 40px;
-    font-size: 16px;
-    background-color: white; /* Белый фон */
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .signUpButton::before {
-    content: "Тіркелу";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
-    background-size: 800% 800%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientText 15s ease infinite;
-    white-space: nowrap; /* Оставляем текст на одной строке */
-    font-size: 16px; /* Размер текста */
-  }
-  
-  @keyframes gradientText {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+.logo {
+  display: flex;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
 
-  .signOutButton {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: transparent;
-    border: 2px solid white; /* Белая рамка */
-    border-radius: 8px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
+.logoImage {
+  width: 100%;
+  height: 100%;
+}
 
-  @keyframes gradientText {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+.navList {
+  display: flex;
+  list-style: none;
+  align-items: center; /* Выровнять элементы по центру */
+  margin: 0; /* Убрать отступы */
+  padding: 0; /* Убрать отступы */
+}
+
+.navList li {
+  margin-left: 20px;
+}
+
+.navList a {
+  color: white;
+  text-decoration: none;
+}
+
+.langSwitch a {
+  margin-left: 10px;
+}
+
+.logInButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: transparent;
+  border: 2px solid white; /* Белая рамка */
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 200px); 
+  margin: 0 90px; 
+}
+
+.signUpButton {
+  padding: 22px 40px;
+  font-size: 16px;
+  background-color: white; /* Белый фон */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.signUpButton::before {
+  content: "Тіркелу";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 15s ease infinite;
+  white-space: nowrap; /* Оставляем текст на одной строке */
+  font-size: 16px; /* Размер текста */
+}
+
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .dropdown {
-    position: relative;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  .dropdown a {
-    cursor: pointer;
+  100% {
+    background-position: 0% 50%;
   }
-  
-  .dropdownContent {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    transform: translateY(-10px);
-  }
-  
-  .dropdown:hover .dropdownContent {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .dropdownContent a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropdownContent a:hover {
-    background-color: #ddd;
-  }
+}
+
+.signOutButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: transparent;
+  border: 2px solid white; /* Белая рамка */
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown a {
+  cursor: pointer;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transform: translateY(-10px);
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdownContent a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdownContent a:hover {
+  background-color: #ddd;
+}
