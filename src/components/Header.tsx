@@ -7,6 +7,7 @@ import Logo from '../../public/logo_ozger.svg'; // Убедитесь, что п
 
 const Header = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     // Проверка наличия токена в локальном хранилище
@@ -22,16 +23,24 @@ const Header = () => {
     window.location.href = '/'; // Перенаправление на главную страницу после выхода
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.headerContent}>
         <Link href="/" passHref legacyBehavior>
           <a className={styles.logo}>
-            {console.log(<Logo className={styles.logoImage} />)}
-            <Logo className={styles.logoImage} /> 
+            <Logo className={styles.logoImage} />
           </a>
         </Link>
-        <nav>
+        <div className={styles.burgerMenu} onClick={toggleMenu}>
+          <div className={`${styles.burgerLine} ${isMenuOpen ? styles.burgerLineOpen1 : ''}`} />
+          <div className={`${styles.burgerLine} ${isMenuOpen ? styles.burgerLineOpen2 : ''}`} />
+          <div className={`${styles.burgerLine} ${isMenuOpen ? styles.burgerLineOpen3 : ''}`} />
+        </div>
+        <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
           <ul className={styles.navList}>
             {!isAuthenticated ? (
               <>

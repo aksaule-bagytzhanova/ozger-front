@@ -1,5 +1,9 @@
 /* src/styles/Home.module.css */
+
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .gradientSection {
@@ -8,10 +12,9 @@
   background-size: 800% 800%;
   animation: gradientBackground 15s ease infinite;
   display: flex;
-  flex-direction: column; /* Изменим на column, так как модель удалена */
-  align-items: flex-start;
-  padding-left: 74px;
-  position: relative;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
 @keyframes gradientBackground {
@@ -29,17 +32,23 @@
 .whiteSection {
   width: 100%;
   background-color: white;
-  padding-left: 74px;
+  padding: 20px;
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  text-align: left;
-  padding-top: 180px;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
@@ -47,49 +56,45 @@
   line-height: 1.15;
   font-size: 52px;
   color: white;
-  max-width: 600px;
+  max-width: 700px;
+  text-align: center;
 }
 
 .subtitle {
   margin-top: 20px;
   font-size: 1.5rem;
-  color: #0A2540; /* Цвет текста */
+  color: #0A2540;
 }
 
 .buttonContainer {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: fit-content;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .button {
-  margin-top: 20px;
-  padding: 30px 250px;
-  font-size: 24px;
-  color: rgba(0, 0, 0, 0); /* Прозрачный текст */
-  background-color: white; /* Белый фон */
+  padding: 10px 40px; /* Уменьшаем padding */
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0);
+  background-color: white;
   border: none;
   border-radius: 12px;
   cursor: pointer;
   position: relative;
-  white-space: nowrap; /* Запрещаем перенос текста */
-  margin-bottom: 90px;
+  text-align: center;
+  white-space: normal;
+  max-width: 80%; /* Ограничиваем максимальную ширину */
 }
 
 .button::before {
   content: attr(data-text);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  display: block;
+  white-space: normal;
   background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
   background-size: 800% 800%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradientText 15s ease infinite;
-  white-space: nowrap; /* Запрещаем перенос текста */
 }
 
 @keyframes gradientText {
@@ -107,22 +112,24 @@
 .howItWorksContainer {
   margin-top: 50px;
   display: flex;
-  flex-direction: column; /* Выровняем вертикально */
-  align-items: flex-start; /* Выровняем по левой стороне */
-  margin-bottom: 20px; /* Добавим отступ снизу */
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .howItWorksTitle {
   margin-top: 50px;
   font-size: 65px;
   color: #0A2540;
-  margin: 0; /* Уберем верхний и нижний отступ */
+  margin: 0;
+  text-align: center;
 }
 
 .howItWorksText {
   font-size: 20px;
   color: #0A2540;
-  margin-top: 20px; /* Отступ сверху */
+  margin-top: 20px;
+  text-align: center;
 }
 
 .grid {
@@ -155,14 +162,14 @@
 .card h3 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
-  color: #0A2540; /* Цвет текста */
+  color: #0A2540;
 }
 
 .card p {
   margin: 0;
   font-size: 1.25rem;
   line-height: 1.5;
-  color: #0A2540; /* Цвет текста */
+  color: #0A2540;
 }
 
 .videoCard {
@@ -176,4 +183,95 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+/* Медиазапросы для адаптации под планшеты */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 42px;
+  }
+
+  .button {
+    padding: 10px 30px; /* Уменьшаем padding */
+    font-size: 16px;
+    max-width: 70%; /* Ограничиваем максимальную ширину */
+  }
+
+  .howItWorksTitle {
+    font-size: 55px;
+  }
+
+  .howItWorksText {
+    font-size: 18px;
+  }
+}
+
+/* Медиазапросы для адаптации под смартфоны */
+@media (max-width: 768px) {
+  .gradientSection {
+    padding: 20px;
+    align-items: center;
+    padding-top: 40px;
+  }
+
+  .whiteSection {
+    padding: 20px;
+  }
+
+  .main {
+    align-items: center;
+    padding-top: 60px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .button {
+    padding: 8px 20px; /* Уменьшаем padding */
+    font-size: 14px;
+    max-width: 100%; /* Ограничиваем максимальную ширину */
+  }
+
+  .button::before {
+    font-size: 14px;
+  }
+
+  .howItWorksTitle {
+    font-size: 40px;
+  }
+
+  .howItWorksText {
+    font-size: 16px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+}
+
+/* Медиазапросы для адаптации под маленькие экраны */
+@media (max-width: 480px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .button {
+    padding: 6px 15px; /* Уменьшаем padding */
+    font-size: 12px;
+    max-width: 90%; /* Ограничиваем максимальную ширину */
+  }
+
+  .button::before {
+    font-size: 12px;
+  }
+
+  .howItWorksTitle {
+    font-size: 32px;
+  }
+
+  .howItWorksText {
+    font-size: 14px;
+  }
 }

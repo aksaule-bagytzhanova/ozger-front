@@ -1,3 +1,5 @@
+/* src/styles/Header.module.css */
+
 .header {
   padding: 20px;
   display: flex;
@@ -32,12 +34,55 @@
   height: 100%;
 }
 
+.burgerMenu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.burgerLine {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: transform 0.4s, opacity 0.4s;
+}
+
+.burgerLineOpen1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burgerLineOpen2 {
+  opacity: 0;
+}
+
+.burgerLineOpen3 {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.nav {
+  display: flex;
+}
+
+.navOpen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
+  background-size: 800% 800%;
+  animation: gradientBackground 15s ease infinite;
+}
+
 .navList {
   display: flex;
   list-style: none;
-  align-items: center; /* Выровнять элементы по центру */
-  margin: 0; /* Убрать отступы */
-  padding: 0; /* Убрать отступы */
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .navList li {
@@ -58,7 +103,7 @@
   font-size: 16px;
   color: white;
   background-color: transparent;
-  border: 2px solid white; /* Белая рамка */
+  border: 2px solid white;
   border-radius: 8px;
   cursor: pointer;
   position: relative;
@@ -69,19 +114,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: calc(100% - 200px); 
-  margin: 0 90px; 
+  width: calc(100% - 200px);
+  margin: 0 90px;
 }
 
 .signUpButton {
   padding: 22px 40px;
   font-size: 16px;
-  background-color: white; /* Белый фон */
+  background-color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  color: black; /* Установим цвет текста */
 }
 
 .signUpButton::before {
@@ -95,8 +141,8 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradientText 15s ease infinite;
-  white-space: nowrap; /* Оставляем текст на одной строке */
-  font-size: 16px; /* Размер текста */
+  white-space: nowrap;
+  font-size: 16px;
 }
 
 @keyframes gradientText {
@@ -116,7 +162,7 @@
   font-size: 16px;
   color: white;
   background-color: transparent;
-  border: 2px solid white; /* Белая рамка */
+  border: 2px solid white;
   border-radius: 8px;
   cursor: pointer;
   position: relative;
@@ -158,4 +204,90 @@
 
 .dropdownContent a:hover {
   background-color: #ddd;
+}
+
+/* Медиазапросы для уменьшения размеров меню */
+
+@media (max-width: 1024px) {
+  .navList {
+    font-size: 14px;
+  }
+
+  .navList li {
+    margin-left: 10px;
+  }
+
+  .logInButton, .signUpButton, .signOutButton {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .headerContent {
+    width: 100%;
+    margin: 0;
+    justify-content: space-between;
+  }
+
+  .navList {
+    font-size: 12px;
+    padding: 0 10px;
+  }
+
+  .navList li {
+    margin-left: 8px;
+  }
+
+  .logInButton, .signUpButton, .signOutButton {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .signUpButton {
+    padding: 16px 30px; /* Уменьшим размеры кнопки */
+    font-size: 14px; /* Уменьшим размер шрифта */
+  }
+}
+
+@media (max-width: 480px) {
+  .headerContent {
+    width: 100%;
+    margin: 0;
+    justify-content: space-between;
+  }
+
+  .burgerMenu {
+    display: flex;
+  }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navOpen {
+    display: flex;
+  }
+
+  .navList {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navList li {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .logInButton, .signUpButton, .signOutButton {
+    width: 100%;
+    text-align: center;
+  }
+
+  .signUpButton {
+    padding: 12px 20px; /* Еще раз уменьшим размеры кнопки */
+    font-size: 12px; /* Еще раз уменьшим размер шрифта */
+  }
 }
