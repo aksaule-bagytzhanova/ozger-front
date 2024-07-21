@@ -1,0 +1,124 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 36px;
+  background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 15s ease infinite;
+  margin-bottom: 40px;
+  text-align: center; /* Центрируем заголовок */
+}
+
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.mealSection {
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 40px;
+}
+
+.mealTitle {
+  font-size: 28px;
+  color: #0A2540;
+  margin-bottom: 20px;
+}
+
+.mealContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mealImageWrapper {
+  position: relative;
+  width: 45%;
+  padding-bottom: 45%; /* Сохраняем соотношение сторон 1:1 */
+  margin-bottom: 20px;
+}
+
+.mealImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.mealTitleOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.mealItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.mealItem:hover {
+  transform: translateY(-10px);
+}
+
+.recipeButton {
+  padding: 10px 20px;
+  font-size: 14px;
+  color: white;
+  background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
+  background-size: 800% 800%;
+  animation: gradientBackground 15s ease infinite;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.nutritionalInfo {
+  text-align: left;
+  color: #0A2540;
+  list-style-type: none;
+  padding-left: 0;
+}

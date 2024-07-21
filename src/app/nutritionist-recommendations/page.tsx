@@ -68,7 +68,7 @@ export default function NutritionistRecommendations() {
 
   const renderNutritionalInfo = (description) => {
     return (
-      <ul>
+      <ul className={styles.nutritionalInfo}>
         {description.split('\n').map((line, index) => (
           <li key={index}>{line}</li>
         ))}
@@ -82,8 +82,11 @@ export default function NutritionistRecommendations() {
       <div className={styles.mealSection}>
         <h2 className={styles.mealTitle}>Таңғы ас</h2>
         <div className={styles.mealContent}>
+          <div className={styles.mealImageWrapper}>
+            <img src="../images/human_food/1.jpg" alt="Таңғы ас" className={styles.mealImage} />
+            <div className={styles.mealTitleOverlay}>{recommendation.breakfast.title}</div>
+          </div>
           <div className={styles.mealItem}>
-            <div className={styles.mealImage}>{recommendation.breakfast.title}</div>
             <button className={styles.recipeButton} onClick={() => handleRecipeClick(recommendation.breakfast.recipe, recommendation.breakfast.title)}>Рецепт</button>
             <div className={styles.nutritionalInfo}>
               {renderNutritionalInfo(recommendation.breakfast.description)}
@@ -95,8 +98,11 @@ export default function NutritionistRecommendations() {
       <div className={styles.mealSection}>
         <h2 className={styles.mealTitle}>Түскі ас</h2>
         <div className={styles.mealContent}>
+          <div className={styles.mealImageWrapper}>
+            <img src="../images/human_food/2.jpg" alt="Түскі ас" className={styles.mealImage} />
+            <div className={styles.mealTitleOverlay}>{recommendation.lunch.title}</div>
+          </div>
           <div className={styles.mealItem}>
-            <div className={styles.mealImage}>{recommendation.lunch.title}</div>
             <button className={styles.recipeButton} onClick={() => handleRecipeClick(recommendation.lunch.recipe, recommendation.lunch.title)}>Рецепт</button>
             <div className={styles.nutritionalInfo}>
               {renderNutritionalInfo(recommendation.lunch.description)}
@@ -108,8 +114,11 @@ export default function NutritionistRecommendations() {
       <div className={styles.mealSection}>
         <h2 className={styles.mealTitle}>Кешкі ас</h2>
         <div className={styles.mealContent}>
+          <div className={styles.mealImageWrapper}>
+            <img src="../images/human_food/3.jpg" alt="Кешкі ас" className={styles.mealImage} />
+            <div className={styles.mealTitleOverlay}>{recommendation.dinner.title}</div>
+          </div>
           <div className={styles.mealItem}>
-            <div className={styles.mealImage}>{recommendation.dinner.title}</div>
             <button className={styles.recipeButton} onClick={() => handleRecipeClick(recommendation.dinner.recipe, recommendation.dinner.title)}>Рецепт</button>
             <div className={styles.nutritionalInfo}>
               {renderNutritionalInfo(recommendation.dinner.description)}

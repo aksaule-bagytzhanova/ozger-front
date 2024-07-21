@@ -1,4 +1,3 @@
-// src/app/page.tsx
 "use client";
 
 import Link from 'next/link';
@@ -9,15 +8,17 @@ export default function Home() {
     <div className={styles.container}>
       <div className={styles.gradientSection}>
         <main className={styles.main}>
-          <h1 className={styles.title}>
-          Дұрыс тамақтаныңыз <br />
-          Дұрыс жаттығыңыз <br />
-          Өзіңізді жақсы сезініңіз
-          </h1>
-          <div className={styles.buttonContainer}>
-            <Link href="/create-nutrition-plan" passHref legacyBehavior>
-              <button className={styles.button} data-text="Жекеленген тамақтану жоспарын алыңыз"></button>
-            </Link>
+          <div className={styles.titleContainer}>
+            <h1 className={styles.title}>
+              Дұрыс тамақтаныңыз <br />
+              Дұрыс жаттығыңыз <br />
+              Өзіңізді жақсы сезініңіз
+            </h1>
+            <div className={styles.buttonContainer}>
+              <Link href="/create-nutrition-plan" passHref legacyBehavior>
+                <button className={styles.button} data-text="Жекеленген тамақтану жоспарын алыңыз"></button>
+              </Link>
+            </div>
           </div>
         </main>
       </div>

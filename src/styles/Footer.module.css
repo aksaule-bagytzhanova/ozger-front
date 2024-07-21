@@ -1,25 +1,37 @@
 /* src/styles/Footer.module.css */
+
 .footer {
   width: 100%;
   padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff; /* Устанавливаем белый фон */
+  background-color: #fff;
+  flex-wrap: wrap; /* Чтобы элементы могли переноситься на новую строку */
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #0A2540; /* Цвет текста */
+  color: #0A2540;
+  text-decoration: none;
 }
 
 .navList {
   display: flex;
   list-style: none;
-  align-items: center; /* Выровнять элементы по центру */
-  margin: 0; /* Убрать отступы */
-  padding: 0; /* Убрать отступы */
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  justify-content: center;
 }
 
 .navList li {
@@ -27,10 +39,42 @@
 }
 
 .navList a {
-  color: #0A2540; /* Цвет текста */
-  text-decoration: none; /* Убрать подчеркивание */
+  color: #0A2540;
+  text-decoration: none;
 }
 
 .legal {
-  color: #0A2540; /* Цвет текста */
+  color: #0A2540;
+  text-align: center;
+  flex: 1;
+}
+
+/* Медиазапросы для адаптации под различные размеры экранов */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navList {
+    margin-top: 10px;
+  }
+
+  .navList li {
+    margin-left: 10px;
+  }
+
+  .legal {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .navList li {
+    margin-left: 5px;
+  }
 }

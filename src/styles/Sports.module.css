@@ -1,0 +1,92 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .title {
+    font-size: 36px;
+    background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
+    background-size: 800% 800%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientText 15s ease infinite;
+    margin-bottom: 40px;
+    text-align: center; /* Центрируем заголовок */
+  }
+  
+  @keyframes gradientText {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .foodsSection, .sportsSection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start; /* Центрируем содержимое секции */
+    gap: 20px; /* Добавляем пространство между контейнерами */
+    width: 80%;
+  }
+  
+  .foodContent, .sportContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(33.333% - 20px); /* 3 контейнера в строке с учетом отступов */
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    text-align: center; /* Центрируем текст */
+    cursor: pointer;
+  }
+  
+  .foodContent:hover, .sportContent:hover {
+    transform: translateY(-10px);
+  }
+  
+  .foodImageWrapper, .sportImageWrapper {
+    position: relative;
+    width: 90%;
+    padding-bottom: 90%; /* Сохраняем соотношение сторон 1:1 */
+    margin-bottom: 20px;
+  }
+  
+  .foodImage, .sportImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .foodTitleOverlay, .sportTitleOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
+  .foodDescription, .sportDescription {
+    text-align: center;
+    color: #0A2540;
+    padding: 0 10px;
+  }
+  
