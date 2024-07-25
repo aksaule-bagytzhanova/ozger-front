@@ -14,6 +14,8 @@ interface NutritionPlan {
   question5: string;
   question6: string;
   question7: string;
+  question8: string;
+  question9: string;
 }
 
 const SignUpPage = () => {
@@ -60,17 +62,24 @@ const SignUpPage = () => {
         if (nutritionPlan) {
           const profileData = {
             date_of_birth: nutritionPlan.question3,
-            gender: nutritionPlan.question1 === 'Male' ? 'M' : 'F',
+            gender: nutritionPlan.question1 === 'Ер адам' ? 'M' : 'F',
             weight: parseFloat(nutritionPlan.question5),
             height: parseFloat(nutritionPlan.question4),
             ideal_weight: parseFloat(nutritionPlan.question2),
             target: {
-              'Lose weight': 'LW',
-              'Gain weight': 'GW',
-              'Gain muscle mass': 'GMM',
-              'Add physical activities': 'APA'
+              'Салмақты тастау': 'LW',
+              'Салмақ қосу': 'GW',
+              'Бұлшықет массасын қосу': 'GMM',
+              'Физикалық белсенділіктерді қосу': 'APA'
             }[nutritionPlan.question6],
-            allergy: nutritionPlan.question7
+            allergy: nutritionPlan.question7,
+            injuries: nutritionPlan.question8,
+            time_limit: {
+              'Бір ай ішінде': 'onemonth',
+              '2-3 апта ішінде': 'twoweek',
+              '2-3 ай ішінде': 'twomonth',
+              'Жарты жыл ішінде': 'sixmonth'
+            }[nutritionPlan.question9],
           };
 
           await axios.put('http://185.129.51.174:8001/api/profile/update/', profileData, {
