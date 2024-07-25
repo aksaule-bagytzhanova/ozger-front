@@ -104,7 +104,6 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  margin-top: 20px;
 }
 
 .createPlanButton:disabled,
