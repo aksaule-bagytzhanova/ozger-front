@@ -21,7 +21,7 @@ export default function StarsPage() {
     if (token) {
       const fetchStars = async () => {
         try {
-          const response = await axios.get('http://185.129.51.174:8001/api/stars', {
+          const response = await axios.get('https://www.ozger.space/api/stars', {
             headers: {
               'Authorization': `Bearer ${token}`
             }

@@ -45,7 +45,7 @@ const SignUpPage = () => {
     };
 
     try {
-      const response = await axios.post('http://185.129.51.174:8001/api/auth/registration/', requestBody, {
+      const response = await axios.post('https://www.ozger.space/api/auth/registration/', requestBody, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -82,7 +82,7 @@ const SignUpPage = () => {
             }[nutritionPlan.question9],
           };
 
-          await axios.put('http://185.129.51.174:8001/api/profile/update/', profileData, {
+          await axios.put('https://www.ozger.space/api/profile/update/', profileData, {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`,
