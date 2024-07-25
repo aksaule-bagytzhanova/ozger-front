@@ -13,6 +13,8 @@ interface Parameters {
   height: string;
   allergens: string;
   selectedPlan: string;
+  injuries: string;
+  time_limit: string;
 }
 
 const targets = {
@@ -21,6 +23,14 @@ const targets = {
   'GMM': 'Gain muscle mass',
   'APA': 'Add physical activities'
 } as const;
+
+const time_limits = {
+  'onemonth': 'One month',
+  'twoweek': 'Two week',
+  'twomonth': 'Two month',
+  'sixmonth': 'Six month'
+} as const;
+
 
 const MyParameters = () => {
   const [parameters, setParameters] = useState<Parameters>({
@@ -31,7 +41,10 @@ const MyParameters = () => {
     height: '',
     allergens: '',
     selectedPlan: '',
+    injuries: '',
+    time_limit: '',
   });
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -47,14 +60,16 @@ const MyParameters = () => {
 
           const data = response.data;
           setParameters({
-            dateOfBirth: data.date_of_birth,
-            sex: data.gender === 'M' ? 'Male' : 'Female',
-            currentWeight: data.weight.toString(),
-            weightGoal: data.ideal_weight.toString(),
-            height: data.height.toString(),
-            allergens: data.allergy,
-            selectedPlan: targets[data.target as keyof typeof targets] || ''
-          });
+            dateOfBirth: data.date_of_birth || '',
+            sex: data.gender === 'M' ? 'Male' : data.gender === 'F' ? 'Female' : '',
+            currentWeight: data.weight !== null && data.weight !== undefined ? data.weight.toString() : '',
+            weightGoal: data.ideal_weight !== null && data.ideal_weight !== undefined ? data.ideal_weight.toString() : '',
+            height: data.height !== null && data.height !== undefined ? data.height.toString() : '',
+            allergens: data.allergy || '',
+            selectedPlan: targets[data.target as keyof typeof targets] || '',
+            injuries: data.injuries !== null && data.injuries !== undefined ? data.injuries.toString() : '',
+            time_limit: time_limits[data.time_limit as keyof typeof time_limits] || '',
+          });          
         } catch (error) {
           console.error('Error fetching profile:', error);
         } finally {
@@ -85,7 +100,9 @@ const MyParameters = () => {
         height: parseFloat(parameters.height),
         ideal_weight: parseFloat(parameters.weightGoal),
         target: Object.keys(targets).find(key => targets[key as keyof typeof targets] === parameters.selectedPlan),
-        allergy: parameters.allergens
+        allergy: parameters.allergens,
+        injuries: parameters.injuries,
+        time_limit: Object.keys(time_limits).find(key => time_limits[key as keyof typeof time_limits] === parameters.time_limit),
       };
 
       try {
@@ -197,7 +214,31 @@ const MyParameters = () => {
               className={styles.input}
             />
           </div>
+          <div className={styles.column}>
+            <label>Физикалық жарақаттар</label>
+            <input
+              type="text"
+              name="injuries"
+              value={parameters.injuries}
+              onChange={handleInputChange}
+              className={styles.input}
+            />
+          </div>
         </div>
+        <div className={styles.column}>
+            <label>Таңдалған жоспарыңыз</label>
+            <select
+              name="time_limit"
+              value={parameters.time_limit}
+              onChange={handleInputChange}
+              className={styles.input}
+            >
+              <option value="One month">Бір ай ішінде</option>
+              <option value="Two week">2-3 апта ішінде</option>
+              <option value="Two month">2-3 ай ішінде</option>
+              <option value="Six month">Жарты жыл ішінде</option>
+            </select> 
+          </div>
         <button type="submit" className={styles.button}>Сақтау</button>
       </form>
     </div>
