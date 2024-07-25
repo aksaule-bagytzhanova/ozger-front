@@ -1,4 +1,3 @@
-// src/app/create-nutrition-plan/page.tsx
 "use client"; // Добавляем директиву
 
 import Link from 'next/link';
@@ -14,8 +13,6 @@ interface Question {
 
 const CreateNutritionPlan = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [genders, setGenders] = useState([]);
-  const [targets, setTargets] = useState([]);
   const [progress, setProgress] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({
@@ -25,7 +22,9 @@ const CreateNutritionPlan = () => {
     question4: '',
     question5: '',
     question6: '',
-    question7: ''
+    question7: '',
+    question8: '',
+    question9: ''
   });
 
   useEffect(() => {
@@ -38,7 +37,9 @@ const CreateNutritionPlan = () => {
           { question: "Сіздің бойыңыз қанша?", type: 'number' },
           { question: "Сіздің қазіргі салмағыңыз қанша?", type: 'number' },
           { question: "Нақты қандай мақсатқа жетуді қалайсыз?", type: 'options', options: ['Салмақты тастау', 'Салмақ қосу', 'Бұлшықет массасын қосу', 'Физикалық белсенділіктерді қосу'] },
-          { question: "Аллергендеріңізді көрсетіңіз", type: 'text' }
+          { question: "Аллергендеріңізді көрсетіңіз", type: 'text' },
+          { question: "Сізде қандай физикалық жарақаттар бар?", type: 'text' },
+          { question: "Сіз өз мақсатыңызға қандай уақыт аралығында қол жеткізгіңіз келеді?", type: 'options', options: ['Бір ай ішінде', '2-3 апта ішінде', '2-3 ай ішінде', 'Жарты жыл ішінде'] }
         ]);
       } catch (error) {
         console.error('Error fetching choices:', error);
@@ -53,7 +54,7 @@ const CreateNutritionPlan = () => {
       ...prevAnswers,
       [`question${currentQuestionIndex + 1}`]: answer,
     }));
-    setProgress((prev) => Math.min(prev + (100 / questions.length), 100)); // Увеличение прогресса на 1/7 части
+    setProgress((prev) => Math.min(prev + (100 / questions.length), 100)); // Увеличение прогресса на 1/9 части
     setCurrentQuestionIndex((prev) => prev + 1);
   };
 
@@ -66,7 +67,7 @@ const CreateNutritionPlan = () => {
   };
 
   const handleNextClick = () => {
-    setProgress((prev) => Math.min(prev + (100 / questions.length), 100)); // Увеличение прогресса на 1/7 части
+    setProgress((prev) => Math.min(prev + (100 / questions.length), 100)); // Увеличение прогресса на 1/9 части
     setCurrentQuestionIndex((prev) => prev + 1);
   };
 
@@ -140,9 +141,9 @@ const CreateNutritionPlan = () => {
         </>
       ) : (
         <>
-          <h1 className={styles.title}>Thank you!</h1>
-          <p>Create a personalized nutrition plan</p>
-          <button className={styles.submitButton} onClick={handleSubmit}>Submit</button>
+          <h1 className={styles.title}>Рахмет!</h1>
+          <p>Жеке тамақтану жоспарын құрыңыз</p>
+          <button className={styles.submitButton} onClick={handleSubmit}>Сақтау!</button>
         </>
       )}
     </div>

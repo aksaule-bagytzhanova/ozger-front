@@ -63,7 +63,7 @@ const Header = () => {
                     <Link href="/nutritionist-recommendations" passHref legacyBehavior>
                       <a>Нутрициолог дәрігердің ұсыныстары</a>
                     </Link>
-                    <Link href="/recommendations/fitness-instructor" passHref legacyBehavior>
+                    <Link href="/fitness-recommendations" passHref legacyBehavior>
                       <a>Фитнес жаттықтырушысының ұсыныстары</a>
                     </Link>
                   </div>

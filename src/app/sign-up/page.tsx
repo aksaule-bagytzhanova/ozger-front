@@ -120,7 +120,7 @@ const SignUpPage = () => {
         />
         {error && <p className={styles.error}>{error}</p>}
         <button type="submit" className={styles.button} disabled={loading}>
-          {loading ? 'Loading...' : 'Жалғастыру'}
+          {loading ? 'Жүктелуде...' : 'Жалғастыру'}
         </button>
       </form> 
       <div className={styles.footer}>
