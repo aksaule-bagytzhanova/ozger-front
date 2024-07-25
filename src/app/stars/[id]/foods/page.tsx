@@ -30,7 +30,7 @@ export default function FoodsPage() {
     if (token && id) {
       const fetchFoods = async () => {
         try {
-          const response = await axios.get(`http://185.129.51.174:8001/api/stars/${id}/foods`, {
+          const response = await axios.get(`https://www.ozger.space/api/stars/${id}/foods`, {
             headers: {
               'Authorization': `Bearer ${token}`
             }

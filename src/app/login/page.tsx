@@ -20,7 +20,7 @@ const LoginPage = () => {
     };
 
     try {
-      const response = await fetch('http://185.129.51.174:8001/api/token/', {
+      const response = await fetch('https://www.ozger.space/api/token/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

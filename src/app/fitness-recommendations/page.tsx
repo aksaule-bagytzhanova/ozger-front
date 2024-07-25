@@ -22,7 +22,7 @@ export default function SportsPage() {
     if (token && hasGenerated) {
       const fetchWorkouts = async () => {
         try {
-          const response = await axios.get('http://185.129.51.174:8001/api/workouts', {
+          const response = await axios.get('https://www.ozger.space/api/workouts', {
             headers: {
               'Authorization': `Bearer ${token}`
             }

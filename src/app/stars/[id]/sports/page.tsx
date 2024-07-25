@@ -23,7 +23,7 @@ export default function SportsPage() {
     if (token && id) {
       const fetchSports = async () => {
         try {
-          const response = await axios.get(`http://185.129.51.174:8001/api/stars/${id}/sports`, {
+          const response = await axios.get(`https://www.ozger.space/api/stars/${id}/sports`, {
             headers: {
               'Authorization': `Bearer ${token}`
             }

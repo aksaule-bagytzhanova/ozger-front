@@ -16,7 +16,7 @@ export default function NutritionistRecommendations() {
     if (token) {
       const fetchLastRecommendation = async () => {
         try {
-          const response = await axios.get('http://185.129.51.174:8001/api/recommendations/', {
+          const response = await axios.get('https://www.ozger.space/api/recommendations/', {
             headers: {
               'Authorization': `Bearer ${token}`
             }
@@ -37,7 +37,7 @@ export default function NutritionistRecommendations() {
     if (token) {
       setIsCreating(true);
       try {
-        const response = await axios.post('http://185.129.51.174:8001/api/recommendations/', {}, {
+        const response = await axios.post('https://www.ozger.space/api/recommendations/', {}, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'

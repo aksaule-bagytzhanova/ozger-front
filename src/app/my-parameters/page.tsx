@@ -39,7 +39,7 @@ const MyParameters = () => {
     if (token) {
       const fetchProfile = async () => {
         try {
-          const response = await axios.get('http://185.129.51.174:8001/api/profile/retrieve/', {
+          const response = await axios.get('https://www.ozger.space/api/profile/retrieve/', {
             headers: {
               'Authorization': `Bearer ${token}`
             }
@@ -89,7 +89,7 @@ const MyParameters = () => {
       };
 
       try {
-        const response = await axios.put('http://185.129.51.174:8001/api/profile/update/', profileData, {
+        const response = await axios.put('https://www.ozger.space/api/profile/update/', profileData, {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
