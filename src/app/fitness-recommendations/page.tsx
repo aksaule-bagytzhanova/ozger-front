@@ -6,10 +6,19 @@ import styles from '../../styles/FitnessPlan.module.css';
 
 interface Workout {
   id: number;
-  name: string;
+  title: string;
   description: string;
-  image: string;
+  photo: string;
+  fitness_body_part_type: string;
 }
+
+const bodyPartTranslations: { [key: string]: string } = {
+  hand: 'Қол',
+  leg: 'Аяқ',
+  back: 'Арқа',
+  chest: 'Кеуде',
+  press: 'Пресс',
+};
 
 export default function SportsPage() {
   const [workouts, setWorkouts] = useState<Workout[]>([]);
@@ -18,39 +27,50 @@ export default function SportsPage() {
   const [hasGenerated, setHasGenerated] = useState(false);
 
   useEffect(() => {
+    fetchWorkouts();
+  }, []);
+
+  const fetchWorkouts = async () => {
     const token = localStorage.getItem('token');
-    if (token && hasGenerated) {
-      const fetchWorkouts = async () => {
-        try {
-          const response = await axios.get('https://www.ozger.space/api/workouts', {
-            headers: {
-              'Authorization': `Bearer ${token}`
-            }
-          });
-          setWorkouts(response.data);
-        } catch (error) {
-          console.error('Ошибка при получении списка тренировок:', error);
-        }
-      };
-
-      fetchWorkouts();
+    if (token) {
+      try {
+        const response = await axios.get('https://www.ozger.space/api/profile_sports/', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        setWorkouts(response.data);
+      } catch (error) {
+        console.error('Ошибка при получении списка тренировок:', error);
+      }
     }
-  }, [hasGenerated]);
+  };
 
-  const createNewWorkoutPlan = () => {
+  const createNewWorkoutPlan = async () => {
     setIsCreating(true);
-    // Ваш логика создания нового плана тренировок
-    setTimeout(() => {
-      setHasGenerated(true);
-      setIsCreating(false);
-    }, 2000); // Имитация задержки запроса
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const response = await axios.post('https://www.ozger.space/api/profile_sports/', {}, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        setWorkouts(response.data);
+        setHasGenerated(true);
+      } catch (error) {
+        console.error('Ошибка при создании нового плана тренировок:', error);
+      } finally {
+        setIsCreating(false);
+      }
+    }
   };
 
   const savePlan = () => {
     setIsSaving(true);
     // Ваш логика сохранения плана тренировок
     setTimeout(() => {
-      alert('План тренировки сохранен');
+      alert('Жаттығу жоспары сақталды');
       setIsSaving(false);
     }, 2000); // Имитация задержки запроса
   };
@@ -70,14 +90,14 @@ export default function SportsPage() {
       
       {hasGenerated && (
         <>
-          {['Руки', 'Ноги', 'Плечи', 'Спина', 'Пресс'].map((part) => (
+          {['hand', 'leg', 'back', 'chest', 'press'].map((part) => (
             <div className={styles.section} key={part}>
-              <h2 className={styles.workoutTitle}>{part}</h2>
+              <h2 className={styles.workoutTitle}>{bodyPartTranslations[part]}</h2>
               <div className={styles.workoutList}>
-                {workouts.filter(workout => workout.name.includes(part)).slice(0, 3).map((workout) => (
+                {workouts.filter(workout => workout.fitness_body_part_type === part).map((workout) => (
                   <div className={styles.workoutItem} key={workout.id}>
                     <div className={styles.workoutImageWrapper}>
-                      <img src={workout.image || '/placeholder.jpg'} alt={workout.name} className={styles.workoutImage} />
+                      <img src={workout.photo || '/placeholder.jpg'} alt={workout.title} className={styles.workoutImage} />
                     </div>
                     <button className={styles.workoutButton}>Как выполнять</button>
                   </div>
