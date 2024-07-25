@@ -34,7 +34,7 @@ export default function SportsPage() {
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        const response = await axios.get('https://www.ozger.space/api/profile_sports/', {
+        const response = await axios.get('https://www.ozger.space/api/profile-sports/', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -51,7 +51,7 @@ export default function SportsPage() {
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        const response = await axios.post('https://www.ozger.space/api/profile_sports/', {}, {
+        const response = await axios.post('https://www.ozger.space/api/profile-sports/', {}, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
