@@ -16,11 +16,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <GoogleAnalytics />
       </head>
       <body>
-        <div className="page-container">
-          <Header />
-          <main className="content-wrap">{children}</main>
-          <Footer />
-        </div>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

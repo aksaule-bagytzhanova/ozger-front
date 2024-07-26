@@ -1,9 +1,11 @@
+'use client';
+
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import Script from 'next/script';
 
 const GoogleAnalytics = () => {
-  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -11,11 +13,8 @@ const GoogleAnalytics = () => {
         page_path: url,
       });
     };
-    router.events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router.events]);
+    handleRouteChange(pathname);
+  }, [pathname]);
 
   return (
     <>
