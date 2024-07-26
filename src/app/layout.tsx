@@ -1,7 +1,7 @@
-// src/app/layout.tsx
 import '../styles/globals.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import GoogleAnalytics from '../components/GoogleAnalytics';
 import { ReactNode } from 'react';
 
 export const metadata = {
@@ -12,6 +12,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body>
         <Header />
         {children}
