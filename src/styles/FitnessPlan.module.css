@@ -77,8 +77,10 @@
 }
 
 .workoutButton {
-  background: linear-gradient(90deg, #ff0080, #e3d10c);
   color: white;
+  background: linear-gradient(270deg, #ff0080, #e3d10c, #40e08d, #7922ca);
+  background-size: 800% 800%;
+  animation: gradientBackground 15s ease infinite;
   border: none;
   border-radius: 10px;
   padding: 10px 20px;
@@ -104,7 +106,7 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  margin-top: 0px;
+  margin-top: 10px;
 }
 
 .createPlanButton:disabled,

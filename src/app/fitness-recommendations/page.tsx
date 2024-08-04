@@ -1,8 +1,9 @@
-"use client";
+"use client"; // Add this line to mark the component as a Client Component
 
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import styles from '../../styles/FitnessPlan.module.css';
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import styles from "../../styles/FitnessPlan.module.css";
 
 interface Workout {
   id: number;
@@ -13,11 +14,11 @@ interface Workout {
 }
 
 const bodyPartTranslations: { [key: string]: string } = {
-  hand: 'Қол',
-  leg: 'Аяқ',
-  back: 'Арқа',
-  chest: 'Кеуде',
-  press: 'Пресс',
+  hand: "Қол",
+  leg: "Аяқ",
+  back: "Арқа",
+  chest: "Кеуде",
+  press: "Пресс",
 };
 
 export default function SportsPage() {
@@ -31,35 +32,43 @@ export default function SportsPage() {
   }, []);
 
   const fetchWorkouts = async () => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
       try {
-        const response = await axios.get('https://www.ozger.space/api/profile-sports/', {
-          headers: {
-            'Authorization': `Bearer ${token}`
+        const response = await axios.get(
+          "https://www.ozger.space/api/profile-sports/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
-        });
+        );
         setWorkouts(response.data);
+        setHasGenerated(true);
       } catch (error) {
-        console.error('Ошибка при получении списка тренировок:', error);
+        console.error("Ошибка при получении списка тренировок:", error);
       }
     }
   };
 
   const createNewWorkoutPlan = async () => {
     setIsCreating(true);
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
       try {
-        const response = await axios.post('https://www.ozger.space/api/profile-sports/', {}, {
-          headers: {
-            'Authorization': `Bearer ${token}`
+        const response = await axios.post(
+          "https://www.ozger.space/api/profile-sports/",
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
-        });
+        );
         setWorkouts(response.data);
         setHasGenerated(true);
       } catch (error) {
-        console.error('Ошибка при создании нового плана тренировок:', error);
+        console.error("Ошибка при создании нового плана тренировок:", error);
       } finally {
         setIsCreating(false);
       }
@@ -68,57 +77,70 @@ export default function SportsPage() {
 
   const savePlan = () => {
     setIsSaving(true);
-    // Ваш логика сохранения плана тренировок
     setTimeout(() => {
-      alert('Жаттығу жоспары сақталды');
+      alert("Жаттығу жоспары сақталды");
       setIsSaving(false);
-    }, 2000); // Имитация задержки запроса
+    }, 2000);
   };
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Фитнес жаттықтырушысының ұсыныстары</h1>
       {!hasGenerated && (
-        <button 
-          className={styles.createPlanButton} 
-          onClick={createNewWorkoutPlan} 
+        <button
+          className={styles.createPlanButton}
+          onClick={createNewWorkoutPlan}
           disabled={isCreating}
         >
-          {isCreating ? 'Жасалуда...' : 'Жаңа жаттығу жоспарын жасаңыз'}
+          {isCreating ? "Жасалуда..." : "Жаңа жаттығу жоспарын жасаңыз"}
         </button>
       )}
-      
+
       {hasGenerated && (
         <>
-          {['hand', 'leg', 'back', 'chest', 'press'].map((part) => (
+          {["hand", "leg", "back", "chest", "press"].map((part) => (
             <div className={styles.section} key={part}>
-              <h2 className={styles.workoutTitle}>{bodyPartTranslations[part]}</h2>
+              <h2 className={styles.workoutTitle}>
+                {bodyPartTranslations[part]}
+              </h2>
               <div className={styles.workoutList}>
-                {workouts.filter(workout => workout.fitness_body_part_type === part).map((workout) => (
-                  <div className={styles.workoutItem} key={workout.id}>
-                    <div className={styles.workoutImageWrapper}>
-                      <img src={workout.photo || '/placeholder.jpg'} alt={workout.title} className={styles.workoutImage} />
+                {workouts
+                  .filter(
+                    (workout) => workout.fitness_body_part_type === part
+                  )
+                  .map((workout, index) => (
+                    <div className={styles.workoutItem} key={workout.id}>
+                      <div className={styles.workoutImageWrapper}>
+                        <img
+                          src={`/${index + 1}.jpg`}
+                          alt={workout.title}
+                          className={styles.workoutImage}
+                        />
+                      </div>
+                      <Link href={`/fitness-recommendations/${workout.id}`}>
+                        <button className={styles.workoutButton}>
+                          Как выполнять
+                        </button>
+                      </Link>
                     </div>
-                    <button className={styles.workoutButton}>Как выполнять</button>
-                  </div>
-                ))}
+                  ))}
               </div>
             </div>
           ))}
-          
-          <button 
-            className={styles.createPlanButton} 
-            onClick={createNewWorkoutPlan} 
+
+          <button
+            className={styles.createPlanButton}
+            onClick={createNewWorkoutPlan}
             disabled={isCreating}
           >
-            {isCreating ? 'Жасалуда...' : 'Жаңа жаттығу жоспарын жасаңыз'}
+            {isCreating ? "Жасалуда..." : "Жаңа жаттығу жоспарын жасаңыз"}
           </button>
-          <button 
-            className={styles.savePlanButton} 
-            onClick={savePlan} 
+          <button
+            className={styles.savePlanButton}
+            onClick={savePlan}
             disabled={isSaving}
           >
-            {isSaving ? 'Сақталуда...' : 'Бұл планды сақтау'}
+            {isSaving ? "Сақталуда..." : "Бұл планды сақтау"}
           </button>
         </>
       )}
