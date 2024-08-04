@@ -30,7 +30,7 @@ const RecipePage = () => {
 
   return (
     <div className={styles.container}>
-      <button onClick={handleBackClick} className={styles.backButton}>&larr; Back</button>
+      <button onClick={handleBackClick} className={styles.backButton}>&larr; Оралу</button>
       <h1 className={styles.title}>{title}</h1>
       <pre className={styles.recipeText}>{renderRecipe(recipe)}</pre>
     </div>

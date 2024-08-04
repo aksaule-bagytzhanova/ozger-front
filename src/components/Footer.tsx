@@ -12,7 +12,7 @@ const Footer = () => {
       <ul className={styles.navList}>
       </ul>
       <div className={styles.legal}>
-        <p>© 2024 Ozger AI. All rights reserved.</p>
+        <p>© 2024 Ozger AI. Барлық құқықтар қорғалған.</p>
       </div>
     </footer>
   );

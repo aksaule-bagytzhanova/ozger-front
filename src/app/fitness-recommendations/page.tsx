@@ -119,7 +119,7 @@ export default function SportsPage() {
                       </div>
                       <Link href={`/fitness-recommendations/${workout.id}`}>
                         <button className={styles.workoutButton}>
-                          Как выполнять
+                          Жасалуы
                         </button>
                       </Link>
                     </div>
