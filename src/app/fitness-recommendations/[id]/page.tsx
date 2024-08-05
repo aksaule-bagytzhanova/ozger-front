@@ -55,7 +55,6 @@ const WorkoutDetails = () => {
       {workout ? (
         <>
           <h1 className={styles.title}>{workout.title}</h1>
-          <img src={workout.photo} alt={workout.title} className={styles.image} />
           <div className={styles.descriptionText}>{renderDescription(workout.description)}</div>
         </>
       ) : (
