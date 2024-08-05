@@ -112,10 +112,11 @@ export default function SportsPage() {
                     <div className={styles.workoutItem} key={workout.id}>
                       <div className={styles.workoutImageWrapper}>
                         <img
-                          src={`/${index + 1}.jpg`}
+                          src={`../images/fitness_photo/${index + 1}.jpg`}
                           alt={workout.title}
                           className={styles.workoutImage}
                         />
+                        <div className={styles.mealTitleOverlay}>{workout.title}</div>
                       </div>
                       <Link href={`/fitness-recommendations/${workout.id}`}>
                         <button className={styles.workoutButton}>
